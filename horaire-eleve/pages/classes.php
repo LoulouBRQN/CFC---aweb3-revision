@@ -16,10 +16,11 @@
         <label for="nomClasse">Nom de la classe :</label>
         <input type="text" name="nomClasse" id="nomClasse">
         <label for="anneeClasse">Annee scolaire :</label>
-        <input type="text" name="anneeClasse" id="anneeClasse">
+        <input type="date" name="anneeClasse" id="anneeClasse">
         <button type="submit">Créer la classe</button>
     </form>
 </div>
+
 
 
 
