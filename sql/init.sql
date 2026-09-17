@@ -28,7 +28,20 @@ CREATE TABLE creneaux (
     heure_debut TIME NOT NULL,
     heure_fin TIME NOT NULL,
     salle VARCHAR(20) NOT NULL,
-
     FOREIGN KEY (classe_id) REFERENCES classes(id) ON DELETE CASCADE,
     FOREIGN KEY (cours_id) REFERENCES cours(id) ON DELETE CASCADE
 );
+
+INSERT INTO classes (nom, annee_scolaire) VALUES
+('I.DA-P3A', '2026-2027'),
+('I.DA-P1A', '2026-2027');
+
+INSERT INTO cours (code, nom) VALUES
+('AWEB3', 'Atelier Web 3e année S1'),
+('BD3', 'Bases de données'),
+('PROG3', 'Programmation');
+
+INSERT INTO creneaux (classe_id, cours_id, jour, heure_debut, heure_fin, salle) VALUES
+(1, 1, 'jeudi', '08:05:00', '11:40:00', 'R104'),
+(1, 2, 'mardi', '13:30:00', '16:55:00', 'R205'),
+(2, 3, 'lundi', '08:05:00', '11:40:00', 'R103');

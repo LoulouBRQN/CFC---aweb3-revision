@@ -1,0 +1,21 @@
+.card {
+    background-color: #bf9ee7;
+}
+input{
+    background-color: rgb(255, 255, 143);
+}
+select{
+    background-color: rgb(255, 255, 143);
+
+}
+button{
+    color: black;
+    background-color: orange;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+}
+a{
+    color: red;
+}
