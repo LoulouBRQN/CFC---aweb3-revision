@@ -14,19 +14,6 @@ Cette application permet de gérer :
 
 Le projet utilise PHP, MySQL, PDO et une API RESTful en JSON.
 
-## Installation
-
-1. Copier le dossier `horaire-eleve` dans le dossier du serveur web, par exemple `htdocs` avec XAMPP.
-2. Démarrer Apache et MySQL.
-3. Ouvrir phpMyAdmin ou un client MySQL.
-4. Exécuter le fichier `sql/init.sql`.
-5. Vérifier les identifiants dans `config/database.php`.
-6. Ouvrir :
-
-`http://localhost/horaire-eleve/`
-
-Si le dossier est installé avec un autre nom ou dans un autre emplacement, adapter l'URL du menu dans `includes/header.php`.
-
 ## Base de données
 
 Le fichier `sql/init.sql` crée la base `horaire` et les trois tables :
@@ -133,6 +120,3 @@ horaire-eleve/
 └── README.md
 ```
 
-## Séparation du code
-
-La logique de connexion à la base, les fonctions SQL, l'affichage et les pages sont séparés dans différents fichiers. Les fichiers sont réutilisés avec `require_once` et `include`.
