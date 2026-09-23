@@ -1,0 +1,39 @@
+info:
+  name: POST Cours
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/cours"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TEST-BRUNO",
+        "nom": "Cours Test Bruno"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HTTP 201", function() {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        test("Un ID est retourné", function() {
+          expect(res.getBody()).to.have.property("id");
+        });
+
+        test("Message correct", function() {
+          expect(res.getBody().message).to.equal("Cours créé");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

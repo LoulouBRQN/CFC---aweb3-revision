@@ -1,0 +1,26 @@
+info:
+  name: GET Classes - Structure
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{BASE_URL}}/classes"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HTTP 200", function() {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Les classes ont les champs attendus", function() {
+          const body = res.getBody();
+          if (body.length > 0) {
+            expect(body[0]).to.have.property("id");
+            expect(body[0]).to.have.property("nom");
+            expect(body[0]).to.have.property("annee_scolaire");
+          }
+        });

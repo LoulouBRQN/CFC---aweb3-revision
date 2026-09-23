@@ -1,0 +1,39 @@
+info:
+  name: POST Cours invalide
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/cours"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "",
+        "nom": ""
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HTTP 400", function() {
+          expect(res.getStatus()).to.equal(400);
+        });
+
+        test("Une erreur est retournée", function() {
+          expect(res.getBody()).to.have.property("error");
+        });
+
+        test("Message correct", function() {
+          expect(res.getBody().error).to.equal("code et nom sont obligatoires");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

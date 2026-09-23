@@ -1,0 +1,34 @@
+info:
+  name: POST Classe invalide
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/classes"
+  body:
+    type: json
+    data: |-
+      {
+        "nom": ""
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HTTP 400", function() {
+          expect(res.getStatus()).to.equal(400);
+        });
+
+        test("Une erreur est retournée", function() {
+          expect(res.getBody()).to.have.property("error");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,26 @@
+info:
+  name: GET Cours - Structure
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{BASE_URL}}/cours"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HTTP 200", function() {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Les cours ont les champs attendus", function() {
+          const body = res.getBody();
+          if (body.length > 0) {
+            expect(body[0]).to.have.property("id");
+            expect(body[0]).to.have.property("code");
+            expect(body[0]).to.have.property("nom");
+          }
+        });

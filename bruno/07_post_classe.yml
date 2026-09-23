@@ -1,0 +1,39 @@
+info:
+  name: POST Classe
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/classes"
+  body:
+    type: json
+    data: |-
+      {
+        "nom": "TEST-BRUNO",
+        "annee_scolaire": "2026-2027"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HTTP 201", function() {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        test("Un ID est retourné", function() {
+          expect(res.getBody()).to.have.property("id");
+        });
+
+        test("Message correct", function() {
+          expect(res.getBody().message).to.equal("Classe créée");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

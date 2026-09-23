@@ -1,0 +1,25 @@
+info:
+  name: GET Cours par classe
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{BASE_URL}}/cours?classe=I.DA-P3A"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HTTP 200", function() {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        test("La classe est présente", function() {
+          expect(res.getBody()).to.have.property("classe");
+        });
+
+        test("L'année scolaire est présente", function() {
+          expect(res.getBody()).to.have.property("annee_scolaire");
+        });
