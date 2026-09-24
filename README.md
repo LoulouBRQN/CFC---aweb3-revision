@@ -2,6 +2,18 @@
 
 **Nom :** Louis Bourquin  
 **Projet :** Application web de gestion des horaires des classes du CFPT.
+## Pour lancer
+
+### Cloner le projet (sur le bureau)
+```powershell
+git clone https://github.com/LoulouBRQN/CFC---aweb3-revision.git
+```
+
+### Lancer le projet (dans le repo)
+Démarre Docker Desktop
+```powershell
+docker compose up
+```
 
 ## Description
 
